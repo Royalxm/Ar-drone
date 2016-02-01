@@ -96,8 +96,7 @@ process.stdin.on('readable', () => {
    decttouch(chunk);
 
   }
-
-var vartest;
+  client.stop();
 //client.land();
 //client.on('navdata.demo.flyState', console.log);
 client.on('navdata.rawMeasures', console.log);

@@ -1,52 +1,41 @@
+var keyb = require('.Module/keybord.js');
+var speed = require('.Module/vitesse.js');
 var arDrone = require('ar-drone');
+var client  = arDrone.createClient();
 var http    = require('http');
 
-//var pngStream = arDrone.createClient().getPngStream();
-var client = arDrone.createClient();
-client.disableEmergency();
 
-console.log('Connecting png stream ...');
-var pngStream = client.getPngStream();
 
-var lastPng;
-pngStream
-  .on('error', console.log)
-  .on('data', function(pngBuffer) {
-    lastPng = pngBuffer;
-  });
+process.stdin.setEncoding('UTF-8');
+process.stdin.setRawMode(true);
 
-var server = http.createServer(function(req, res) {
-  if (!lastPng) {
-    res.writeHead(503);
-    res.end('Did not receive any png data yet.');
-    return;
+
+// PROTOTYPE :
+
+String.prototype.trim = function(){
+	return this.replace(/^\s+|\s+$/g,"");
+};
+
+
+
+speed.iniz();
+console.log(speed.vitesse());
+
+speed.acceleration();
+console.log(speed.vitesse());
+
+client.config('general:navdata_demo', 'FALSE');
+
+process.stdin.on('readable', () => {
+  var chunk = process.stdin.read();
+
+ if (chunk !== null) {
+   keyb.keybord(chunk);
   }
+  client.stop();
+client.on('navdata.rawMeasures', console.log);
 
-  res.writeHead(200, {'Content-Type': 'image/png'});
-  res.end(lastPng);
-});
 
-server.listen(8080, function() {
-  console.log('Serving latest png on port 8080 ...');
-  client.takeoff();
 
-client.on('navdata', console.log);
-  client
-    .after(3000, function() {
-      this.stop();
-    })
-    .after(1000, function() {
-      this.up(0.1);
-    })
-     .after(2000, function() {
-      this.down(0.1);
-    })
-    .after(2000, function() {
-      this.stop();
-    })
-    .after(1000, function() {
-      this.stop();
-      this.land();
-    });
 
 });

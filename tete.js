@@ -1,25 +1,5 @@
-var arDrone = require('ar-drone');
+var arDrone = require('ar-drone'); 
 var arDroneConstants = require('ar-drone/lib/constants');
-
-var keyb = require('./Module/keybord.js');
-var speed = require('./Module/vitesse.js');
-//var valeur = require('./Module/valeur.js');
-
-
-
-process.stdin.setEncoding('UTF-8');
-process.stdin.setRawMode(true);
-
-
-// PROTOTYPE :
-
-String.prototype.trim = function(){
-	return this.replace(/^\s+|\s+$/g,"");
-};
-
-//valeur.altitude();
-
-
 
 function navdataOptionMask(c) {
   return 1 << c;
@@ -41,42 +21,23 @@ client.config('general:navdata_options', navdataOptions);
 
 
 	client.on('navdata',function(data){
-		if(data.demo && data.wifi)
+		if(data.demo && data.rawMeasures)
 		{
 			console.log("Demo :");
 			//console.log(data.demo);
 		
 			
 				console.log(data.demo.velocity);
-				console.log(data.wifi.linkQuality);
+				console.log(data.rawMeasures.accelerometers.x);
 		}
-	
+		else
+		{
+		
+		}
+				
+
+
 	
 	//console.log(data.time);	
 	});
 	
-		
-speed.iniz();
-console.log(speed.vitesse());
-
-
-
-//console.log(navdata.demo);
-
-process.stdin.on('readable', () => {
-	
-	
-  var chunk = process.stdin.read();
-
- if (chunk !== null) {
-   keyb.keybord(chunk);
-  }
-  
-  client.stop();
-
- 
- });
- 
-
-
-   

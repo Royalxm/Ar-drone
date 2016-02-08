@@ -3,22 +3,22 @@ var speed = 0.1;
 
 module.exports = {
 
-/** iniz two colours together. */
+/** Initialise la valeurs de vitesse. Entre 0 (Min) 1 (Max). */
 
   iniz: function() {
 	  speed = 0.1;
   },
-/** acceleration two colours together. */
+/** Incremente la valeur speed de 0.1. Attention de pas depasser 1. */
   acceleration: function(){
 	  speed = speed + 0.1;
 	  return speed;
   },
-/** ralentir two colours together. */
+/** decremente la valeur speed de 0.1. Attention de pas depasser 0. */
   ralentir: function(){
 	  speed = speed - 0.1;
 		return speed;
   },
-/** vitesse two colours together. */
+/** Renvoie la valeur de speed. */
   vitesse: function(){
 		return speed;
   }

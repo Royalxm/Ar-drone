@@ -1,55 +1,38 @@
 # ARdrone
 
-Dillinger is a cloud-enabled, mobile-ready, offline-storage, AngularJS powered HTML5 Markdown editor.
+Le projet consiste à faire voler un drone de manière autonome dans un environnement qui lui est inconnu. Le drone sera capable d’évoluer dans un environnement en évitant les obstacles. Il devra être capable de créer une cartographie de l’espace parcouru. 
+Nous allons utiliser un AR Drone de la marque Parrot, c'est un hélicoptère quadrirotor qui est compatible avec plusieures plateformes et se pilote via une liaison Wi-Fi.
 
-  - Type some Markdown on the left
-  - See HTML in the right
-  - Magic
-
-Markdown is a lightweight markup language based on the formatting conventions that people naturally use in email.  As [John Gruber] writes on the [Markdown site][df1]
-
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
-
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.
 
 ### Version
-0.0.1
+1.0.1
 
-### Tech
+### Librairie
 
-Dillinger uses a number of open source projects to work properly:
 
-* [node-ar-drone] - 
-* [node.js] - evented I/O for the backend
+* [node-ar-drone] 
 
+Nous avons décidé d’utiliser une librairie développer sous Node JS. Celle-ci est open source, compatible avec l’AR Drone 2.0, simple d’utilisation et possédant une documentation riche. Node.js est une plateforme logiciel libre et événementielle en JavaScript orientée vers les applications réseaux. 
+
+* [node.js] 
+
+* [OpenCV]
+Sachant que nous pouvons récupérer le flux vidéo des cameras présentes sur l’AR drone nous pourrons l’utiliser pour détecter les obstacles ou pour que le drone puisse suivre des marqueurs et se déplacer en conséquence. Pour le traitement d’image nous avons décidé d’utiliser la librairie OpenCV.
 
 ### Installation
 
-You need Gulp installed globally:
+Telecharger les sources du projets puis :
 
 ```sh
 $ node main.js
 ```
 
-### Plugins
-
-Dillinger is currently extended with the following plugins
-
-* Github
-
-
 ### Todos
 
- - Write Tests
- - Rethink Github Save
- - Add Code Comments
- - Add Night Mode
+ - Ecrire les tests
+ - Detection obstacles
+ - Algorithme de vole autonome
+ - Rajouter une mannete avec Joystick
 
 License
 ----

@@ -21,8 +21,8 @@ String.prototype.trim = function(){
 
 
 /**
- * Represents a navdataOptionMask.
- * @constructor
+ * Renvoie le mask binaire correspondant à l'option envoyer en paramettre.
+ * @function
  */
 
 function navdataOptionMask(c) {

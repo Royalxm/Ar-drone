@@ -5,7 +5,7 @@ var client  = arDrone.createClient();
 /** @module Valeur */
 
 module.exports = {
-	/** altitude two colours together. */
+	/** renvoie les valeurs de vol. */
 	altitude: function(){
 	//	var al;
 		client.on('navdata', function(navdata) {

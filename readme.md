@@ -11,10 +11,10 @@ Nous allons utiliser un AR Drone de la marque Parrot, c'est un hélicoptère qua
 
 
 * [node-ar-drone] 
-
 Nous avons décidé d’utiliser une librairie développer sous Node JS. Celle-ci est open source, compatible avec l’AR Drone 2.0, simple d’utilisation et possédant une documentation riche. Node.js est une plateforme logiciel libre et événementielle en JavaScript orientée vers les applications réseaux. 
 
 * [node.js] 
+Node.js est une plateforme logicielle libre et événementielle en JavaScript orientée vers les applications réseau qui doivent pouvoir monter en charge.
 
 * [OpenCV]
 Sachant que nous pouvons récupérer le flux vidéo des cameras présentes sur l’AR drone nous pourrons l’utiliser pour détecter les obstacles ou pour que le drone puisse suivre des marqueurs et se déplacer en conséquence. Pour le traitement d’image nous avons décidé d’utiliser la librairie OpenCV.
@@ -48,5 +48,6 @@ GNU GENERAL PUBLIC LICENSE
 
    [node.js]: <http://nodejs.org>
    [node-ar-drone]: <https://github.com/felixge/node-ar-drone/>
+   [OpenCV]: <http://opencv.org/>
 
 

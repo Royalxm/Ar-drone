@@ -20,6 +20,10 @@ String.prototype.trim = function(){
 //valeur.altitude();
 
 
+/**
+ * Represents a navdataOptionMask.
+ * @constructor
+ */
 
 function navdataOptionMask(c) {
   return 1 << c;
@@ -31,7 +35,6 @@ var navdataOptions = (
   | navdataOptionMask(arDroneConstants.options.MAGNETO)
   | navdataOptionMask(arDroneConstants.options.WIFI)
   |  navdataOptionMask(arDroneConstants.options.RAW_MEASURES)
-  
 );
 
 // Connect and configure the drone
@@ -66,7 +69,7 @@ console.log(speed.vitesse());
 process.stdin.on('readable', () => {
 	
 	
-  var chunk = process.stdin.read();
+ var chunk = process.stdin.read();
 
  if (chunk !== null) {
    keyb.keybord(chunk);

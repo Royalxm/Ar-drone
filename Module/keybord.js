@@ -1,8 +1,9 @@
 var arDrone = require('ar-drone');
 var client  = arDrone.createClient();
 var speed = require('./vitesse.js');
-
+/** @module Keybord */
 module.exports = {
+	/** keybord two colours together. */
   keybord:function (chunk){
 	chunk = chunk.trim();
 switch (chunk){

@@ -1,6 +1,6 @@
 var arDrone = require('ar-drone');
 var arDroneConstants = require('ar-drone/lib/constants');
-
+var client  =  arDrone.createClient();
 var keyb = require('./Module/keybord.js');
 var speed = require('./Module/vitesse.js');
 //var valeur = require('./Module/valeur.js');
@@ -35,32 +35,44 @@ var navdataOptions = (
   | navdataOptionMask(arDroneConstants.options.MAGNETO)
   | navdataOptionMask(arDroneConstants.options.WIFI)
   |  navdataOptionMask(arDroneConstants.options.RAW_MEASURES)
+  | navdataOptionMask(arDroneConstants.options.ALTITUDE)
 );
 
 // Connect and configure the drone
-var client = new arDrone.createClient();
 client.config('general:navdata_demo', true);
 client.config('general:navdata_options', navdataOptions);
-
+client.config('video:video_channel', 1);
+client.config('detect:detect_type', 12);
 
 	client.on('navdata',function(data){
-		if(data.demo && data.wifi)
+		if(data.rawMeasures)
 		{
-			console.log("Demo :");
+			console.log("je suis passer :");
 			//console.log(data.demo);
 		
 			
-				console.log(data.demo.velocity);
-				console.log(data.wifi.linkQuality);
+		
+				console.log(data.rawMeasures.gyroscopes);
+			//	console.log(data.altitude.vision);
 		}
+		else
+			console.log("nop");
 	
-	
+	if(data.visionDetect)
+		{
+	if (data.visionDetect.nbDetected > 0) {
+        console.log("Detected: %j", data.visionDetect);
+    }
+		}
+		else
+			console.log("nop2");
 	//console.log(data.time);	
 	});
 	
 		
 speed.iniz();
 console.log(speed.vitesse());
+
 
 
 
@@ -72,13 +84,14 @@ process.stdin.on('readable', () => {
  var chunk = process.stdin.read();
 
  if (chunk !== null) {
-   keyb.keybord(chunk);
+   keyb.keybord(chunk,client);
   }
   
   client.stop();
 
  
  });
+ 
  
 
 

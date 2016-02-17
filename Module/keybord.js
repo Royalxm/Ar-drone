@@ -1,10 +1,10 @@
-var arDrone = require('ar-drone');
-var client  = arDrone.createClient();
+//var arDrone = require('ar-drone');
+//var client  = arDrone.createClient();
 var speed = require('./vitesse.js');
 /** @module Keybord */
 module.exports = {
 	/** Ce Module permet de recuperer les entrez clavier de l'utilisateur. Il permet le controle manuelle du drone.  */
-  keybord:function (chunk){
+  keybord:function (chunk,client){
 	chunk = chunk.trim();
 switch (chunk){
 			

@@ -1,4 +1,4 @@
-var speed = 0.1;
+var speed = 0.05;
 /** @module Vitesse */
 
 module.exports = {

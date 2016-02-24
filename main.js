@@ -52,20 +52,18 @@ client.config('detect:detect_type', 12);
 		
 			
 		
-				console.log(data.rawMeasures.gyroscopes);
-			//	console.log(data.altitude.vision);
+				console.log(data.rawMeasures.accelerometers);
+				console.log("ALTITUDE : "+data.demo.altitude);
+				console.log("baterie : " +data.demo.batteryPercentage);
+				console.log("Vision : " +data.visionDetect.nbDetected);
+				console.log("Visisssson : " +data.rawMeasures.gyroscopes110.x);
 		}
 		else
 			console.log("nop");
+		
 	
-	if(data.visionDetect)
-		{
-	if (data.visionDetect.nbDetected > 0) {
-        console.log("Detected: %j", data.visionDetect);
-    }
-		}
-		else
-			console.log("nop2");
+	
+	
 	//console.log(data.time);	
 	});
 	
@@ -87,7 +85,7 @@ process.stdin.on('readable', () => {
    keyb.keybord(chunk,client);
   }
   
-  client.stop();
+
 
  
  });

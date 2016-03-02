@@ -41,7 +41,7 @@ var navdataOptions = (
 // Connect and configure the drone
 client.config('general:navdata_demo', true);
 client.config('general:navdata_options', navdataOptions);
-client.config('video:video_channel', 1);
+client.config('video:video_channel', 0);
 client.config('detect:detect_type', 12);
 
 	client.on('navdata',function(data){

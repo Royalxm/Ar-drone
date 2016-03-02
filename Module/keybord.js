@@ -46,7 +46,7 @@ switch (chunk){
 		break; 
 
 		case "t":
-		console.log("On tourne a gauche");
+		console.log("Stop");
 		client.stop();
 		break; 
 

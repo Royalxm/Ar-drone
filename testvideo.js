@@ -2,6 +2,8 @@ var cv = require('./node_modules/opencv-wind/lib/opencv');
 var arDrone = require('ar-drone');
 var arDroneConstants = require('ar-drone/lib/constants');
 var client  =  arDrone.createClient();
+
+
 try {
 
 
@@ -10,7 +12,7 @@ var video = arDrone.createClient().getVideoStream();
   var camera = new cv.VideoCapture(0);
   camera.setWidth(320);
   camera.setHeight(240);
-  var window = new cv.NamedWindow('Video', 0);
+  var window = new cv.NamedWindow(video, 0);
   var camFps = 10;
   var trim = 1000 / camFps;
   
@@ -28,7 +30,7 @@ var video = arDrone.createClient().getVideoStream();
       im.rectangle([face.x, face.y], [face.width, face.height], COLOR, 2);
 	   console.log('Tete vu',face.height);
     }
-
+video.on('data', console.log);
 
     window.show(im);
   
@@ -64,9 +66,6 @@ pngStream
        frameCounter++;
       lastFrameTime = now;
       console.log('Saving frame');
-
-
-
 
 
       fs.writeFile('frame.png', pngBuffer, function(err) {

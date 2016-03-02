@@ -6,7 +6,7 @@ module.exports = {
 /** Initialise la valeurs de vitesse. Entre 0 (Min) 1 (Max). */
 
   iniz: function() {
-	  speed = 0.1;
+	  speed = 0.05;
   },
 /** Incremente la valeur speed de 0.1. Attention de pas depasser 1. */
   acceleration: function(){

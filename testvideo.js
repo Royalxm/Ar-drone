@@ -1,4 +1,4 @@
-var cv = require('opencv');
+var cv = require('./node_modules/opencv-wind/lib/opencv');
 var arDrone = require('ar-drone');
 var arDroneConstants = require('ar-drone/lib/constants');
 var client  =  arDrone.createClient();
@@ -20,17 +20,18 @@ var video = arDrone.createClient().getVideoStream();
       console.log(im.size())
     
       window.blockingWaitKey(0, 50);
-    im.detectObject('node_modules/opencv/data/haarcascade_frontalface_alt2.xml', {}, function(err, faces) {
+    im.detectObject('./node_modules/opencv-wind/data/haarcascade_frontalface_alt2.xml', {}, function(err, faces) {
     if (err) throw err;
 
     for (var i = 0; i < faces.length; i++) {
       face = faces[i];
       im.rectangle([face.x, face.y], [face.width, face.height], COLOR, 2);
+	   console.log('Tete vu',face.height);
     }
 
-   // im.save('face-detection-rectangle.png');
+
     window.show(im);
-   // console.log('Image saved to ./tmp/face-detection-rectangle.png');
+  
   });
 
     });

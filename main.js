@@ -39,11 +39,13 @@ var navdataOptions = (
 );
 
 // Connect and configure the drone
-client.config('general:navdata_demo', true);
+client.config('general:navdata_demo', false);
 client.config('general:navdata_options', navdataOptions);
 client.config('video:video_channel', 0);
-client.config('detect:detect_type', 12);
+client.config('detect:detect_type', 2);
 
+//client.takeoff();
+//client.counterClockwise(0.5);
 	client.on('navdata',function(data){
 		if(data.rawMeasures)
 		{
@@ -52,14 +54,31 @@ client.config('detect:detect_type', 12);
 		
 			
 		
-				console.log(data.rawMeasures.accelerometers);
-				console.log("ALTITUDE : "+data.demo.altitude);
+				//console.log(data.rawMeasures.gyroscopes110);
+			//	console.log("ALTITUDE : "+data.demo.altitude);
 				console.log("baterie : " +data.demo.batteryPercentage);
-				console.log("Vision : " +data.visionDetect.nbDetected);
-				console.log("Visisssson : " +data.rawMeasures.gyroscopes110.x);
+			//	console.log("Vision : " +data.visionDetect.nbDetected);
+			//	console.log("Visisssson : " +data.rawMeasures.gyroscopes110.x);
+			if(data.visionDetect)
+		{
+			console.log("je suis passer :");		
+		//	console.log(data.visionDetect);
+
+			if(data.visionDetect.nbDetected > 0)
+			{
+				client.stop();
+				client.counterClockwise(0);
+			}
+				
+		}
+		else
+			console.log("nop vision ");
 		}
 		else
 			console.log("nop");
+
+
+		
 		
 	
 	

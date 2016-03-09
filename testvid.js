@@ -1,4 +1,4 @@
-var cv = require('./node_modules/opencv-wind/lib/opencv');
+var cv = require('opencv');
 var arDrone = require('ar-drone');
 var arDroneConstants = require('ar-drone/lib/constants');
 var client  =  arDrone.createClient();
@@ -73,7 +73,7 @@ pngStream
 
 							if(boole == 1)
 							{
-						//		client.front(speed.vitesse());
+								client.front(speed.vitesse());
 									boole = 0;
 							}
 							else

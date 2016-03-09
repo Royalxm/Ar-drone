@@ -29,25 +29,35 @@ switch (chunk){
 
 		case "e":
 		console.log("On tourne a droite");		
-		client.clockwise(speed.vitesse());
+		client.clockwise(speed.rotvitesse());
 		break;
 		case "a":
 		console.log("On tourne a gauche");
-		client.counterClockwise(speed.vitesse());
+		client.counterClockwise(speed.rotvitesse());
+		break;
+
+		case "v":
+		console.log("On tourne a gauche");
+		client.counterClockwise(0.1);
 		break;
 
 		case "m":
 		console.log("On tourne a droite");
-		client.clockwise(speed.vitesse());
+		client.clockwise(speed.rotvitesse());
 		break;
 		case "k":
 		console.log("On tourne a gauche");
-		client.counterClockwise(speed.vitesse());
+		client.counterClockwise(speed.rotvitesse());
 		break; 
 
 		case "t":
 		console.log("Stop");
 		client.stop();
+		break; 
+		case "u":
+		console.log("Up");
+		client.up(speed.vitesse());
+		
 		break; 
 
 		case "":
